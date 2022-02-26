@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %} Table {% endblock %}
+
+
+{% block body %}
+
+<style type="text/css">
+  h1 {
+    margin-top: 10px;
+  }
+  .input-group {
+    margin-bottom: 10px;
+  }
+    .pager-nav {
+    margin: 16px 0;
+}
+
+
+
+
+
+
+
+
+</style>
+
+<div class="container">
+    <div class="input-group">
+
+        <select id="filter_column">
+            <option value="title">Title</option>
+            <option value="amount">Amount</option>
+            <option value="distance">Distance</option>
+            <option value="date">Date</option>
+        </select>
+
+        <select id=filter_condition>
+            <option value="contains">Contains</option>
+            <option value="equals">Equals</option>
+            <option value="more">More</option>
+            <option value="less">Less</option>
+        </select>
+
+        <input type="text" id="value" size="50" placeholder="Value...">
+
+        <select id="sort_column">
+            <option value="title">Sort by Title</option>
+            <option value="amount">Sort by Amount</option>
+            <option value="distance">Sort by Distance</option>
+        </select>
+
+        <select id="sort_condition">
+            <option value="increase">Increase</option>
+            <option value="decrease">Decrease</option>
+        </select>
+
+        <button class="btn btn-primary" onClick="get_table();" type="button">Search</button>
+
+    </div>
+</div>
+
+<div class="container">
+    <table class="table" id="myTable">
+        <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Distance</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in table %}
+        <tr>
+            <td>{{ row.title }}</td>
+            <td>{{ row.amount }}</td>
+            <td>{{ row.distance }}</td>
+            <td>{{ row.date }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <button class="btn btn-primary" id="previous_page_button" type="button">Previous</button>
+    <button class="btn btn-primary" id="next_page_button" type="button">Next</button>
+</div>
+{% load static %}
+<script type="text/javascript" src="{% static 'table.js' %}"></script>
+
+{% endblock %}
