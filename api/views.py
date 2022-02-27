@@ -14,7 +14,7 @@ class TableAPIView(generics.ListCreateAPIView):
     def list(self, request, *args, **kwargs):
         filter_column = request.query_params.get('filter_column', None)
         filter_condition = request.query_params.get('filter_condition', None)
-        value = request.query_params.get('value', None)
+        value = request.query_params.get('value', None)  # Value for filter
         sort_column = request.query_params.get('sort_column', None)
         sort_condition = request.query_params.get('sort_condition', None)
 
